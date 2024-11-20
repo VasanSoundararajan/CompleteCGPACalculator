@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             semesterContainer.removeAllViews();
             btnClear.setVisibility(View.INVISIBLE);
             btnCalculateCgpa.setVisibility(View.INVISIBLE);
+            tvResult.setText("");
         });
         btnCalculateCgpa.setOnClickListener(view ->{
             try {
@@ -192,10 +193,14 @@ public class MainActivity extends AppCompatActivity {
         BigDecimal tcredits = BigDecimal.ZERO;
 
         // Sum up grades and credits
-        for (int i = 0; i<gradd.size(); i++) {
-            if (gradd.get(i).compareTo(BigDecimal.valueOf(5)) >= 0 && gradd.get(i).compareTo(BigDecimal.valueOf(10)) <= 0) {
-                grade = grade.add(gradd.get(i));
-                tcredits = tcredits.add(cred.get(i));
+        for (int i = 0; i < gradd.size(); i++) {
+            BigDecimal gradePoint = gradd.get(i);
+            BigDecimal credit = cred.get(i);
+
+            // Check if the grade point is in the valid range (5 to 10)
+            if (gradePoint.compareTo(BigDecimal.valueOf(5)) >= 0 && gradePoint.compareTo(BigDecimal.valueOf(10)) <= 0) {
+                grade = grade.add(gradePoint);
+                tcredits = tcredits.add(credit);
             }
         }
 

@@ -133,9 +133,7 @@ public class MainActivity extends AppCompatActivity {
         btnCalculateSgpa.setOnClickListener(view -> {
             try {
                 calculateSgpa(subjectContainer, semesterIndex);
-            } catch (Exception e) {
-                android.widget.Toast.makeText(this, e.getMessage(), android.widget.Toast.LENGTH_SHORT).show();
-            }
+            } catch (Exception e) {}
         });
     }
 
@@ -175,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Calculate SGPA using BigDecimal division
-        BigDecimal sgpa = sum.divide(totalCredits, 2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal sgpa = sum.divide(totalCredits, 2, RoundingMode.HALF_UP);
 
         // Add SGPA to the list
 
@@ -198,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
             BigDecimal credit = cred.get(i);
 
             // Check if the grade point is in the valid range (5 to 10)
-            if (gradePoint.compareTo(BigDecimal.valueOf(5)) >= 0 && gradePoint.compareTo(BigDecimal.valueOf(10)) <= 0) {
+            if (gradePoint.compareTo(BigDecimal.ZERO) > 0 ) {
                 grade = grade.add(gradePoint);
                 tcredits = tcredits.add(credit);
             }

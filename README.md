@@ -87,8 +87,3 @@ This project is open-source and free to use for personal or educational purposes
 📱 [LinkedIn](https://www.linkedin.com/in/vasan-s-624b34253)
 
 ---
-
-```
-
-Let me know if you'd like a Play Store banner mockup, feature graphic, or the app packaged into `.apk` format.
-```
